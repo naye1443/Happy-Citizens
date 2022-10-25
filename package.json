@@ -1,0 +1,26 @@
+{
+  "name": "happy-citizens",
+  "version": "1.0.0",
+  "description": "application for web based personal property managment system",
+  "main": "app.js",
+  "scripts": {
+    "test": "pwd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naye1443/Happy-Citizens.git"
+  },
+  "author": "Eyan Eubanks, Jordan Diaz, Daniel Izquierdo, S Hassan Shaikh, Danilo  Montalvo, Nuraldeen Bari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naye1443/Happy-Citizens/issues"
+  },
+  "homepage": "https://github.com/naye1443/Happy-Citizens#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "pug": "^3.0.2",
+    "sass": "^1.55.0"
+  }
+}
