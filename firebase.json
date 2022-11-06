@@ -1,5 +1,7 @@
 {
   "hosting": {
-    "public": "build"
-  }
+    "public": "public"
+  },
+  "rewrites": "**",
+  "function": "app"
 }
