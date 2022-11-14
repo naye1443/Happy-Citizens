@@ -1,34 +1,23 @@
 {
-  "name": "happy-citizens",
-  "version": "1.0.0",
-  "description": "application for web based personal property managment system",
-  "main": "app.js",
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
   "scripts": {
-    "start": "node ./bin/www",
-    "sass": "node-sass ./public/stylesheets/sass/ -o ./public/stylesheets/css",
-    "build": "node ./build/"
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/naye1443/Happy-Citizens.git"
+  "engines": {
+    "node": "16"
   },
-  "author": "Eyan Eubanks, Jordan Diaz, Daniel Izquierdo, S Hassan Shaikh, Danilo  Montalvo, Nuraldeen Bari",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/naye1443/Happy-Citizens/issues"
-  },
-  "homepage": "https://github.com/naye1443/Happy-Citizens#readme",
+  "main": "app.js",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "express": "^4.18.2",
-    "firebase": "^9.13.0",
-    "firebase-tools": "^11.16.0",
-    "http-errors": "^2.0.0",
-    "morgan": "^1.10.0",
-    "pug": "^3.0.2",
-    "sass": "^1.55.0"
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^4.0.2"
   },
   "devDependencies": {
-    "node-sass": "^7.0.3"
-  }
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": false
 }
