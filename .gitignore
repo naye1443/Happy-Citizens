@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
-firebase-debug.log
+*.log
+Auth_key.json
