@@ -1,17 +1,14 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('../../Auth_key.json');  // key to use database
 const router = express.Router();
+var data = require('../database/get_data');
 
-// initalizes database
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://happy-8293-default-rtdb.firebaseio.com/"
-});
+data.get_database();    // prints entire database from root
 
 router.get('/',(req, res, next) =>
 {
     res.render('index', {title: 'Hey', message: 'Hello There!'});
+
 });
 
 router.post('/', async(req, res, next) =>
