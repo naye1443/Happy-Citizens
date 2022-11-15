@@ -7,7 +7,7 @@ const logger = require('morgan');
 
 // storing relative file paths to routes
 const indexRouter = require('./routes/index');
-const loginRouter = require('.require/loginRouter');
+const loginRouter = require('./routes/login');
 
 const app = express();  // creates an expess object
 
