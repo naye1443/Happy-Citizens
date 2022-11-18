@@ -1,12 +1,22 @@
 extends layout.pug 
 
 block content 
-    div.text-center 
-        form(method="POST", action="/submit")
-            label(for = "username") Username:
-            input(type = "text", name = "username")
-            br
-            label(for = "password") Password:
-            input(type = "password", name = "password")
-            br
-            input(type = "submit", name = "submit", value = "submit")
+    head 
+        link(rel='stylesheet', href='./stylesheets/css/login.css')
+    .container
+    .form
+        form.login-form(action="./login" method="POST")
+            input(type='text' name='username' placeholder='Username')
+            input(type='text' name='password' placeholder='Password')
+            button.btn(type='submit') Login
+            p.message
+            | Already registered?
+            a(href='#')  Sign in
+        form.register-form(action="/login" method="POST")
+            input(type='text' name='email' placeholder='Email')
+            input(type='text' name='password' placeholder='Password')
+            button.btn(type='submit') Submit
+        p.message
+            | New User? 
+            a(href='#') Create an account
+    
