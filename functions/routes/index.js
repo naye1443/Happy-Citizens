@@ -8,6 +8,11 @@ data.get_database();    // prints entire database from root
 router.get('/',(req, res, next) =>
 {
     res.render('index', {title: 'Hey', message: 'Hello There!'});
+    data.getdatabase()
+    // data.change_record_attr('Users/000', {PhoneNumeber:'(904)829-7293',
+    // StreetAddress: '1783 testDr',
+    // password: 'password',
+    // username: 'username'} );
 
 });
 
