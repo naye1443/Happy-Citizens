@@ -20,16 +20,23 @@ function get_database(){
   });
 }
 
+// finding a value in that data base cannot return value as a json Object
 function get_certain_val(value){
   db = getDatabase();
   dbRef = db.ref(value);
 
-  dbRef.on('value', (snapshot)=>{
-    console.log(snapshot.val());
+
+  jsonobj = dbRef.on('value', (snapshot)=>{
+    //console.log(snapshot.val());
+    return snapshot.toJSON();
   },(errorObject) => {
     console.log('The read failed:' + errorObject.name);
-  });
+  }).then;
+
+  return jsonobj;
 }
+
+
 
 
 // @locationinDB, "Users" or "SuperUsers" Ex. 'Users/000' points to {PhoneNumber: '(561)719-3192', StreetAddress: '1782 testcourtsuper', password: 'passwordsuper', username: 'usernamesuper'// }
@@ -47,7 +54,19 @@ function delete_record(locationinDb){
   dbRef.set(null)
 }
 
-//
+// returns snapshot of an array containing keys of object
+function snapshotToArray(snapshot){
+  var returnArr = [];
+
+  snapshot.forEach(function(childSnapshot){
+    var item = childSnapshot.val();
+    item.key = chileSnapshot.key;
+
+    returnArr.push(item);
+  });
+  returnArr;
+}
+
 
 
 
