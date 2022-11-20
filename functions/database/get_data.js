@@ -21,21 +21,18 @@ function get_database(){
 }
 
 // finding a value in that data base cannot return value as a json Object
-function get_certain_val(value){
+async function get_certain_val(value){
   db = getDatabase();
   dbRef = db.ref(value);
 
+  // returns a promise that is resolved when the refrence to the database toJSON
+  return new Promise((resolve, reject) => {
+    dbRef.once('value', function(snapshot){
+      resolve(snapshot.toJSON());
+    });
+  });
 
-  jsonobj = dbRef.on('value', (snapshot)=>{
-    //console.log(snapshot.val());
-    return snapshot.toJSON();
-  },(errorObject) => {
-    console.log('The read failed:' + errorObject.name);
-  }).then;
-
-  return jsonobj;
-}
-
+};
 
 
 
@@ -66,8 +63,5 @@ function snapshotToArray(snapshot){
   });
   returnArr;
 }
-
-
-
 
 module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val};

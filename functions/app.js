@@ -8,7 +8,7 @@ const logger = require('morgan');
 // storing relative file paths to routes
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
-//const createAccountRouter = require('./routes/createaccount');
+const citizenDashboard = require('./routes/citizenDashboard');
 
 const app = express();  // creates an expess object
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname,'public')));
 // sets up routes to different views
 app.use('/', loginRouter);
 app.use('/index', indexRouter);
-//app.use('/createaccount', createAccountRouter)
+app.use('/citizenDashboard', citizenDashboard)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
