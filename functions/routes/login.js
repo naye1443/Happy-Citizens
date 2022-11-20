@@ -24,7 +24,6 @@ router.post('/', async (req, res, next) =>
     console.log(jsvar);
     // ***************************************************************************************************************************************************/
 
-
     console.log(req.body);  // prints body of request to console
     res.status(201).send(); // sends a 201 status code back
 })
