@@ -75,6 +75,9 @@ To run the app, run
 
 in the root directory of the Happy-Citizens. This should spin up a local verison of the Happy Citizens app on your local host. To access it, click the link that is given in the terminal or type in http://localhost:5001/happy-8293/us-central1/app into any web browser.
 
-## To be continued...
+## If running into errors
 
+Certain versions of node are needed to install certain firebase applications. Hence `functions@1.0.01` uses node v16, however, your current version may be ^=18. Stay between version 16.0.0 and vs 18 and up.
+
+up date your version of dependencies and dev dependencies. Run `npm-check-updates -u` and then run `ncu -u` to update package.json. Then run `npm install` to install new versions.
 
