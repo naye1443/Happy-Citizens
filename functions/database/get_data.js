@@ -35,7 +35,6 @@ async function get_certain_val(value){
 };
 
 
-
 // @locationinDB, "Users" or "SuperUsers" Ex. 'Users/000' points to {PhoneNumber: '(561)719-3192', StreetAddress: '1782 testcourtsuper', password: 'passwordsuper', username: 'usernamesuper'// }
 // @value, json data to add {key: "value"}
 function change_record_attr(locationinDb, value){
@@ -64,4 +63,28 @@ function snapshotToArray(snapshot){
   returnArr;
 }
 
-module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val};
+/**
+*@UsersOrSuperJson: root of Users or SuperUsers in Json
+*@UserID: UsersId as a string (ex. '000' or '001')
+*@Return: Returns User (ex. returnedval.StreetAddress)
+*/
+function getUsersData(UsersOrSuperJson ,UserId){return UsersOrSuperJson[UserID];}
+
+
+function findNode(Username, password, currentNode){
+  var i, currentChild, result;
+  console.log(currentNode[0]);
+  for(prop in currentNode){
+    if(typeof(currentNode[prop]) == "object"){
+      findNode(Username, password, currentNode[prop]);
+    }else
+    {
+      if(prop.username === Username || prop.password === password){
+        console.log("works");
+      }
+    }
+  }
+
+}
+
+module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val, getUsersData, findNode};

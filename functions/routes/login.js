@@ -20,11 +20,18 @@ router.post('/', async (req, res, next) =>
     await data.get_certain_val('/Users').then((data) => {
         varobj = data;
     });
-    const jsvar = JSON.parse(JSON.stringify(varobj));
-    console.log(jsvar);
+     //console.log(varobj);
+     //console.log(typeof varobj);
     // ***************************************************************************************************************************************************/
+    //console.log(req.body);  // prints body of request to console , Hence, username and password
 
-    console.log(req.body);  // prints body of request to console
+    // need to loop through User and SuperUsers until find Matching Username and password
+    //for(varobj)
+    const Username = req.body.username;
+    const Pass = req.body.password;
+
+    console.log(data.findNode(Username,Pass, varobj));
+
     res.status(201).send(); // sends a 201 status code back
 })
 
