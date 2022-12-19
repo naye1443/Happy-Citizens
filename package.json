@@ -19,5 +19,16 @@
   "devDependencies": {
     "firebase-functions-test": "^3.0.0"
   },
-  "private": false
+  "private": false,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naye1443/Happy-Citizens.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naye1443/Happy-Citizens/issues"
+  },
+  "homepage": "https://github.com/naye1443/Happy-Citizens#readme"
 }

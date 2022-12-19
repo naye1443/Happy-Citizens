@@ -8,6 +8,7 @@ const logger = require('morgan');
 // storing relative file paths to routes
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
+const citizenDashboard = require('./routes/citizenDashboard');
 
 const app = express();  // creates an expess object
 
@@ -19,11 +20,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname + 'public')));
+app.use(express.static(path.join(__dirname,'public')));
 
 // sets up routes to different views
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
+app.use('/', loginRouter);
+app.use('/index', indexRouter);
+app.use('/citizenDashboard', citizenDashboard)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

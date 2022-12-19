@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/',(req, res, next) =>
 {
-    res.render('index', {title: 'Hey', message: 'Hello There!'});
+    res.render('citizenDashboard', {title: 'dashboard', message: 'citizen-Dashboard!'});
 });
 
 router.post('/', async(req, res, next) =>

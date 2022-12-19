@@ -20,16 +20,19 @@ function get_database(){
   });
 }
 
-function get_certain_val(value){
+// finding a value in that data base cannot return value as a json Object
+async function get_certain_val(value){
   db = getDatabase();
   dbRef = db.ref(value);
 
-  dbRef.on('value', (snapshot)=>{
-    console.log(snapshot.val());
-  },(errorObject) => {
-    console.log('The read failed:' + errorObject.name);
+  // returns a promise that is resolved when the refrence to the database toJSON
+  return new Promise((resolve, reject) => {
+    dbRef.once('value', function(snapshot){
+      resolve(snapshot.toJSON());
+    });
   });
-}
+
+};
 
 
 // @locationinDB, "Users" or "SuperUsers" Ex. 'Users/000' points to {PhoneNumber: '(561)719-3192', StreetAddress: '1782 testcourtsuper', password: 'passwordsuper', username: 'usernamesuper'// }
@@ -47,8 +50,41 @@ function delete_record(locationinDb){
   dbRef.set(null)
 }
 
-//
+// returns snapshot of an array containing keys of object
+function snapshotToArray(snapshot){
+  var returnArr = [];
+
+  snapshot.forEach(function(childSnapshot){
+    var item = childSnapshot.val();
+    item.key = chileSnapshot.key;
+
+    returnArr.push(item);
+  });
+  returnArr;
+}
+
+/**
+*@UsersOrSuperJson: root of Users or SuperUsers in Json
+*@UserID: UsersId as a string (ex. '000' or '001')
+*@Return: Returns User (ex. returnedval.StreetAddress)
+*/
+function getUsersData(UsersOrSuperJson ,UserId){return UsersOrSuperJson[UserID];}
 
 
+function findNode(Username, password, currentNode){
+  var i, currentChild, result;
+  console.log(currentNode[0]);
+  for(prop in currentNode){
+    if(typeof(currentNode[prop]) == "object"){
+      findNode(Username, password, currentNode[prop]);
+    }else
+    {
+      if(prop.username === Username || prop.password === password){
+        console.log("works");
+      }
+    }
+  }
 
-module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val};
+}
+
+module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val, getUsersData, findNode};
