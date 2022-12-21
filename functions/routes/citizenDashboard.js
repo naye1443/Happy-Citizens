@@ -5,7 +5,12 @@ const router = express.Router();
 
 router.get('/',(req, res, next) =>
 {
-    res.render('citizenDashboard', {title: 'dashboard', message: 'citizen-Dashboard!'});
+    if(req.session.username == 'username'){
+        console.log(req.session.username);
+        res.render('citizenDashboard', {title: 'dashboard', message: 'citizen-Dashboard!'});
+    }else{
+        res.send('You can not access this page');
+    }
 });
 
 router.post('/', async(req, res, next) =>

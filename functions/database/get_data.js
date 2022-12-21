@@ -70,21 +70,32 @@ function snapshotToArray(snapshot){
 */
 function getUsersData(UsersOrSuperJson ,UserId){return UsersOrSuperJson[UserID];}
 
+// Need to return array of JSON objects that has similar key
 
-function findNode(Username, password, currentNode){
-  var i, currentChild, result;
-  console.log(currentNode[0]);
-  for(prop in currentNode){
-    if(typeof(currentNode[prop]) == "object"){
-      findNode(Username, password, currentNode[prop]);
-    }else
-    {
-      if(prop.username === Username || prop.password === password){
-        console.log("works");
-      }
-    }
+/*
+Function takes obj and a key. It returns all Json of all key/value pairs
+*/
+function findJson( obj, Mykeys){
+
+  result = [];
+  // Determines if property contains a JSON obj or not
+  const recursiveSearch = (obj = {}, Mykeys) =>{
+    if(!obj || typeof obj !== 'object') // If not an Object return
+      return;
+    Object.keys(obj).forEach((CurrKey)=>{ // Search all property key value pairs
+      if(CurrKey === Mykeys) // if keys in obj are equal to original key return object
+        result.push(obj[CurrKey]);
+      else  // if key is not equal, then recursively look in object to see if key exist in object
+        recursiveSearch(obj[CurrKey]);
+    });
   }
-
+  recursiveSearch(obj, Mykeys);
+  return result;
+  // Determine if any propertey has a matching key. If not return
+  // If key is matching findJson key, then add object into returning set
+  // We find keys of object, iterate over properties and call function again
 }
 
-module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val, getUsersData, findNode};
+
+
+module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val, getUsersData, findJson};
