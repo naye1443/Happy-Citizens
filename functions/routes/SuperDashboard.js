@@ -12,9 +12,9 @@ const Secure_login = (req, res, next) =>{
 
 router.get('/', Secure_login, (req, res, next) =>
 {
-    if(req.session.username == 'username'){
+    if(req.session.username == 'usernamesuper'){
         console.log(req.session.username);
-        res.render('citizenDashboard', {title: 'dashboard', message: 'citizen-Dashboard!'});
+        res.render('SuperDashboard', {title: 'dashboard', message: 'Super-Dashboard!'});
     }else{
         res.send('You can not access this page');
     }
