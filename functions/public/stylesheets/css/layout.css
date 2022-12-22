@@ -1,10 +1,29 @@
-ul {
+.mainnav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #f24c28;
+    flex-direction:column;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
 }
+
+.logoutnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f24c28;
+    flex-direction:column;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
 
 li {
     float: left;
@@ -14,7 +33,8 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
+    border-radius: 3px;
     text-decoration: none;
 }
 
@@ -24,4 +44,28 @@ li a:hover:not(.active) {
 
 .active {
     background-color: #04AA6D;
+}
+
+.sidenav {
+    height:100%;
+    width:160px;
+    position:fixed;
+    z-index:1;
+    background-color: #f24c28;
+    top:0;  
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow-x:hidden;
+}
+
+.mainnav {
+    height: 50%;
+}
+
+.logoutnav {
+    height: 50%;
+    display: flex;
+    justify-content: end;
 }

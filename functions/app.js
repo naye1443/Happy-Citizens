@@ -63,13 +63,5 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// // MiddleWare used to check User Authentication. Is exported for use in other routes
-// const Secure_login = (req, res, next) =>{
-//   if(req.session.loggedin)
-//       return res.redirect('../');
-//   else
-//       next();
-// }
-
 //module.exports = app;
 exports.app = functions.https.onRequest(app);

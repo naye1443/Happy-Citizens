@@ -3,12 +3,14 @@
 body {
     font-family: "Roboto", sans-serif;
     background: #d7ccc8;
+    height: 100%;
 }
 
 .container {
     padding: 8% 0 0;
     width: 365px;
     margin: auto;
+    height: 100%;
 }
 
 .form {

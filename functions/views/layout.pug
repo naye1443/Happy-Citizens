@@ -1,3 +1,4 @@
+doctype html
 html
   head
     meta(charset='UTF-8')
@@ -6,15 +7,19 @@ html
     link(rel='stylesheet', href='stylesheets/css/layout.css')
     title= title 
 
-    ul
-      li
-        a(href='#home') Home
-      li
-        a(href='#news') My Records 
-      li
-        a(href='#contact') Contact
-      li(style='float:right')
-        a.active(href='#about') log off
+  .sidenav
+    .mainnav
+      ul
+        li
+          a(href='#home') Home
+        li
+          a(href='#news') My Records 
+        li
+          a(href='#contact') Contact
+    .logoutnav
+      ul
+        li(style='float:right')
+          a.active(href='#about') log off
 
   body 
     block content
