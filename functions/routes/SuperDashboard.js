@@ -4,8 +4,10 @@ const admin = require('firebase-admin');
 const router = express.Router();
 
 const Secure_login = (req, res, next) =>{
-    if(req.session.loggedin == false)
-        return res.redirect('../');
+    if(req.session.loggedin == false){
+        console.log("User not logged in. Redirecting to home page");
+        return res.redirect('./');
+    }
     else
         next();
   }

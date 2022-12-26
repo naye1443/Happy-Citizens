@@ -4,20 +4,22 @@ const admin = require('firebase-admin');
 const router = express.Router();
 
 const Secure_login = (req, res, next) =>{
-    if(req.session.loggedin == false)
-        return res.redirect('../');
+    if(req.session.loggedin == false){
+        console.log("User not logged in. Redirecting to home page");
+        return res.redirect('./');
+    }
     else
         next();
-  }
+}
 
 router.get('/', Secure_login, (req, res, next) =>
 {
-    if(req.session.username == 'username'){
-        console.log(req.session.username);
-        res.render('citizenDashboard', {title: 'dashboard', message: 'citizen-Dashboard!'});
-    }else{
-        res.send('You can not access this page');
-    }
+    // if(req.session.username == 'username'){
+    //     console.log(req.session.username);
+    res.render('citizenDashboard', {title: 'dashboard', message: 'CitizenDashboard!'});
+    // }else{
+    //     res.send('You can not access this page');
+    // }
 });
 
 router.post('/', async(req, res, next) =>

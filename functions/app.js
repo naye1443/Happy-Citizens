@@ -38,14 +38,13 @@ app.use(session(
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false,expires:60000 },
-    loggedIn: false
   }));
 
 // sets up routes to different views
 app.use('/', loginRouter);
 app.use('/index', indexRouter);
-app.use('/citizenDashboard', citizenDashboard);
-app.use('/SuperDashboard', SuperDashboard);
+app.use('/citizenDashboard/', citizenDashboard);
+app.use('/SuperDashboard/', SuperDashboard);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

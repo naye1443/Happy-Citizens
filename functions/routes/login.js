@@ -6,6 +6,9 @@ const { json } = require('body-parser');
 
 router.get('/',(req, res, next) =>
 {
+    // check if session has a username associated with session, if not, loggedin is set to false
+    if(req.session.username == null)
+        req.session.loggedin = false;
     res.render('login', {title: 'Hey', message: 'Hello There!'});
 });
 
@@ -31,7 +34,6 @@ router.post('/', async (req, res, next) =>{
     //console.log(req.body);  // prints body of request to console , Hence, username and password
 
     // need to loop through User and SuperUsers until find Matching Username and password
-    //for(varobj)
     const Username = req.body.username;
     const Pass = req.body.password;
 
@@ -70,9 +72,11 @@ router.post('/', async (req, res, next) =>{
     
     if(AuthenticatedUser && usertype == "users"){
         req.session.username = Username;    // Store username in session
+        req.session.loggedin = true;
         res.redirect('./citizenDashboard');    // redirects user and sends username whrough getreq
     }else{
         req.session.username = Username;
+        req.session.loggedin = true;
         res.redirect('./SuperDashboard');
     }
 
