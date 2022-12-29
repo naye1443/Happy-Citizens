@@ -20,10 +20,10 @@ router.post('/', async (req, res, next) =>
     await data.get_certain_val('/Users').then((data) => {
         varobj = data;
     });
-     //console.log(varobj);
+     console.log(varobj);
      //console.log(typeof varobj);
     // ***************************************************************************************************************************************************/
-    //console.log(req.body);  // prints body of request to console , Hence, username and password
+    console.log(req.body);  // prints body of request to console , Hence, username and password
 
     // need to loop through User and SuperUsers until find Matching Username and password
     //for(varobj)
