@@ -75,7 +75,7 @@ function getUsersData(UsersOrSuperJson ,UserId){return UsersOrSuperJson[UserID];
 /*
 Function takes obj and a key. It returns all Json of all key/value pairs
 */
-function findJson( obj, Mykeys){
+function findJson(obj, Mykeys){
 
   result = [];
   // Determines if property contains a JSON obj or not

@@ -31,6 +31,16 @@ li a {
     text-decoration: none;
 }
 
+ul li {
+    display:flex;
+    flex-direction:row;
+}
+
+ul > li:first-child{
+    display:flex;
+    justify-content: end;
+}
+
 .active {
     background-color: #04AA6D;
 }
@@ -48,6 +58,7 @@ li a {
     flex-direction: column;
     overflow-x:hidden;
     transition:0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .mainnav {
@@ -109,12 +120,13 @@ div.header{
 .buttonlogout {
     display: inline-block;
     border-radius: 4px;
-    background-color: #09532d;
+    background-color:#d53900;
     border: none;
     color: #FFFFFF;
     text-align: center;
     font-size: 28px;
     padding: 20px;
+    margin: 15px;
     width: 100%;
     transition: all 0.5s;
     cursor: pointer;

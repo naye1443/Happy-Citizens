@@ -37,7 +37,7 @@ router.post('/', async (req, res, next) =>{
     const Username = req.body.username;
     const Pass = req.body.password;
 
-    // Need to return array of all possible JSONobj in array
+    // Need to return array of all possible JSONobj in arrays to find if user exist
     if(usertype === "users"){
         Users = [];
         AuthenticatedUser = false;
