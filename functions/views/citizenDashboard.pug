@@ -3,5 +3,13 @@ extends layout
 block content
   head
     title= title
-  body
-    h1= message
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE-edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body(id="main")
+    script.
+      PrintPost();  //- Used to debug query for database
+    .container
+      h1= message
+      include mixins/post
+      +list

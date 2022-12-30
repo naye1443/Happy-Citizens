@@ -1,27 +1,158 @@
-ul {
+.mainnav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #375a4e;
+    flex-direction:column;
+    height: 100%;
+    display: flex;
+    justify-content: start;
 }
 
-li {
-    float: left;
+.logoutnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #375a4e;
+    flex-direction:column;
+    height: 100%;
+    display: flex;
+    justify-content: end;
 }
 
 li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
+    border-radius: 3px;
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
-    background-color: #111;
+ul li {
+    display:flex;
+    flex-direction:row;
+}
+
+ul > li:first-child{
+    display:flex;
+    justify-content: end;
 }
 
 .active {
     background-color: #04AA6D;
 }
+
+.sidenav {
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:1;
+    background-color: #375a4e;
+    top:0;  
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow-x:hidden;
+    transition:0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mainnav {
+    height: 50%;
+}
+
+.logoutnav {
+    height: 50%;
+}
+
+.topheader {
+    display:flex;
+    justify-content: start;
+    background-color: #375a4e ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:0;
+}
+
+
+#main {
+  transition: margin-left .5s;
+}
+
+h1 {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+
+.sidenav li {
+    /*background-color: rgb(213, 57, 0);*/
+    margin:5px;
+    border-radius: 10px;
+}
+
+html{
+    height: 100vh;
+}
+
+div.topheader > div {
+    display: flex;
+    align-items: center;
+}
+
+.topheader > div.openbut {
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #d53900;
+}
+
+span {
+    margin: 5px;
+}
+
+div.header{
+    margin-left: 35%;
+}
+
+.buttonlogout {
+    display: inline-block;
+    border-radius: 4px;
+    background-color:#d53900;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    margin: 15px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  
+  .buttonlogout span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .buttonlogout span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .buttonlogout:hover span {
+    padding-right: 25px;
+  }
+  
+  .buttonlogout:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

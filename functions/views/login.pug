@@ -2,21 +2,22 @@ extends layout
 
 block content 
     head 
-        link(rel='stylesheet', href='stylesheets/css/login.css')
-    .container
-    .form
-        form.login-form(action="./" method="POST")
-            input(type='text' name='username' placeholder='Username')
-            input(type='text' name='password' placeholder='Password')
-            button.btn(type='submit') Login
-            p.message
-            | Already registered?
-            a(href='#')  Sign in
-        form.register-form(action="./" method="POST")
-            input(type='text' name='email' placeholder='Email')
-            input(type='text' name='password' placeholder='Password')
-            button.btn(type='submit') Submit
-        p.message
-            | New User? 
-            a(href='./createaccount') Create an account
+        link(rel='stylesheet' type='text/css' href='stylesheets/css/login.css')
+    body(id="main")
+        .container
+            .form
+                form.login-form(action="./" method="POST")
+                    input(type='text' name='username' placeholder='Username')
+                    input(type='password' name='password' placeholder='Password')
+                    button.btn(type='submit') Login
+                    p.message
+                    | Already registered?
+                    a(href='#')  Sign in
+                form.register-form(action="./" method="POST")
+                    input(type='text' name='email' placeholder='Email')
+                    input(type='text' name='password' placeholder='Password')
+                    button.btn(type='submit') Submit
+                p.message
+                    | New User? 
+                    a(href='./createaccount') Create an account
     

@@ -5,10 +5,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// Used for session and cookie writing
+const session  = require('express-session');
+const {v4: uuidv4} = require('uuid');
+
+
 // storing relative file paths to routes
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const citizenDashboard = require('./routes/citizenDashboard');
+const SuperDashboard = require('./routes/SuperDashboard');
 
 const app = express();  // creates an expess object
 
@@ -22,10 +28,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname,'public')));
 
+// adding additional middleware for session and cookies
+app.use(session(
+  { name:'SessionCookie',
+    genid: function(req) {
+        console.log('session id created');
+      return uuidv4();}, // returns randomly generated uuid
+    secret: 'A big! Webserver!',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false,expires:60000 },
+  }));
+
 // sets up routes to different views
 app.use('/', loginRouter);
 app.use('/index', indexRouter);
-app.use('/citizenDashboard', citizenDashboard)
+app.use('/citizenDashboard/', citizenDashboard);
+app.use('/SuperDashboard/', SuperDashboard);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -44,4 +63,4 @@ app.use(function (err, req, res, next) {
 });
 
 //module.exports = app;
-exports.app = functions.https.onRequest(app)
+exports.app = functions.https.onRequest(app);

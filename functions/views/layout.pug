@@ -1,20 +1,41 @@
+doctype html
 html
   head
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE-edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='stylesheets/css/layout.css')
+    meta(name='viewport' type='text/css' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='stylesheets/css/layout.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/css/post.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/css/citizenDashboard.css')
     title= title 
-
-    ul
-      li
-        a(href='#home') Home
-      li
-        a(href='#news') My Records 
-      li
-        a(href='#contact') Contact
-      li(style='float:right')
-        a.active(href='#about') log off
-
-  body 
+    script(src='javascript/sidebar.js')
+    script(src='javascript/post.js')
+  body
+    .topheader
+      div.openbut
+        <span style="font-size:30px;cursor:pointer" onclick="openSidebar()">&#9776; open</span>
+      div.header
+        h1 Happy Citizens
+    .sidenav
+      .mainnav
+        ul
+          li
+            <a href="javascript:void(0)" class="closebutton" onclick="closeSidebar()" style="text-align=right">&times;</a>
+          li
+            svg(xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16")
+              path(d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" fill="white")
+            a(href='#home') Home
+          li
+            svg(width="32" height="32" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+              path(fill="#FFFFFF" d="M4 9h4v2h-4v-2z")
+              path(fill="#FFFFFF" d="M16 2h-1v-2h-10v2h-2v1.25l-0.6 0.75h-1.4v1.75l-1 1.25v9h12l4-5v-9zM2 5h8v2h-8v-2zM11 15h-10v-7h10v7zM12 7h-1v-3h-7v-1h8v4zM14 4.5l-1 1.25v-3.75h-7v-1h8v3.5z")
+            a(href='#news') My Records 
+          li
+            a(href='#contact') Contact
+      .logoutnav
+        ul
+          li
+            button(class="buttonlogout" style="vertical-align:middle")
+              span
+                |Logout
     block content

@@ -1,0 +1,14 @@
+body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  background: #e6c98c;
+  height:100%;
+}
+
+.container {
+  height:100%;
+}
+
+.postcontainer {
+  margin:5px;
+}
