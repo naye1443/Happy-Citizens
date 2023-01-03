@@ -15,7 +15,9 @@ function getPost(){
     });
 }
 
-async function PrintPost(){
+// @Returns resolved promise of post JSON
+async function ReturnPost(){
     realpost = await getPost();
-    console.log(realpost.status);
+    console.log(realpost.status[0]);
+    return realpost.status;
 }

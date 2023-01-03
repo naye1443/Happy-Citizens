@@ -1,16 +1,23 @@
-mixin list
+mixin list(posts, user)
   // creates a mixin
-  mixin card 
+  mixin card(record, user)
     li.card
         div
           h3.card-title
-            | random card title
+            | #{record.PropertyName}
           .card-content
             .content
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        .card-link-wrapper
-          .card-link
-            a(href="#test") test link
+              ul
+                li LastDateEdited: #{record.LastDateEdited}
+                li Insurance Name: #{record.Insurance}
+                li Deductible Ammount: #{record.Deductible}
+                li Owners: #{record.Owners}
+                p user: #{user}
+        each owner, Id in record.Owners
+          if owner == user
+            .card-link-wrapper
+              .card-link
+                a(href="#test") Actual a link
 
   .postcontainer
     h2
@@ -25,9 +32,7 @@ mixin list
         .card-link-wrapper
           .card-link
             a(href="#test") test link
-      +card
-      +card
-      +card
-      +card
-      +card
+      each record, Id in posts
+        +card(record, user)
+
     //- continue cards from here

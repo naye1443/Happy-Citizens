@@ -8,8 +8,9 @@ block content
     meta(name='viewport', content='width=device-width, initial-scale=1')
   body(id="main")
     script.
-      PrintPost();  //- Used to debug query for database
+      ReturnPost();  //- Used to debug query for database
     .container
       h1= message
+      p= user
       include mixins/post
-      +list
+      +list(post, user)

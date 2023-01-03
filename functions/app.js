@@ -35,9 +35,9 @@ app.use(session(
         console.log('session id created');
       return uuidv4();}, // returns randomly generated uuid
     secret: 'A big! Webserver!',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false,expires:60000 },
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false,expires:3600000 },  // Keep cookie for 60 minutes
   }));
 
 // sets up routes to different views

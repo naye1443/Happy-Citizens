@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const router = express.Router();
 const data = require('../database/get_data');
+const { user } = require('firebase-functions/v1/auth');
+const session = require('express-session');
 
 // middleware checks authentication
 const Secure_login = (req, res, next) =>{
@@ -16,7 +18,17 @@ const Secure_login = (req, res, next) =>{
 
 router.get('/', Secure_login, async (req, res, next) =>
 {
-    res.render('citizenDashboard', {title: 'dashboard', message: 'CitizenDashboard!'});  
+
+    var record;
+    await data.get_certain_val('/Records').then((data) => {
+        record = data;
+    });
+    console.log('Username:' + req.session.username);
+
+    req.session.save();
+    
+    res.render('citizenDashboard', {title: 'dashboard', message: 'CitizenDashboard!', post:record, user:req.session.username}, );  
+
 });
 
 router.post('/', async(req, res, next) =>
