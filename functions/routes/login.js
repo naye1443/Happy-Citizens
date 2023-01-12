@@ -76,8 +76,6 @@ router.post('/', async (req, res, next) =>{
         res.redirect('./SuperDashboard');
     }
 
-    console.log("the username is" + req.session.username)
-
     res.status(201).send(); // sends a 201 status code back
 })
 

@@ -23,6 +23,9 @@ router.get('/', Secure_login, async (req, res, next) =>
     await data.get_certain_val('/Records').then((data) => {
         record = data;
     });
+
+    //record[0].LastDateEdited
+
     console.log('Username:' + req.session.username);
 
     req.session.save();
@@ -30,6 +33,26 @@ router.get('/', Secure_login, async (req, res, next) =>
     res.render('citizenDashboard', {title: 'dashboard', message: 'CitizenDashboard!', post:record, user:req.session.username}, );  
 
 });
+
+router.get('./editRecord', Secure_login, (req, res, next) => {
+    // need to determine which card is clicked, and send ID of card clicked
+    // To send data to front end
+
+    console.log(req.body);
+    //const aforeEdited = req.body;
+
+    res.render('editRecord', {title: 'editRecord', message:'editRecord', post:record, user:req.session.username})
+
+})
+
+router.post('editRecord', Secure_login, (req, res, next) => {
+
+    console.log(req.body);
+    //const aforeEdited = req.body;
+
+    res.render('editRecord', {title: 'editRecord', message:'editRecord', post:record, user:req.session.username})
+
+})
 
 router.post('/', async(req, res, next) =>
 {

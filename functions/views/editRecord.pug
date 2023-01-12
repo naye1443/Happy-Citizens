@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE-edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' href='stylesheets/css/editRecord.css')
+  body(id="main")
+    script.
+      //ReturnPost();  //- Used to debug query for database
+    .container
+      form.edit_form(action="./" method="POST")
+        input(type='text' name='Insurance Name' placeholder='Enter Insurance Name...')
+        select(name='InsuranceType')
+            option(value="Minimal Coverage") Minimal Coverage
+            option(value="Partial Coverage") Partial Coverage
+            option(value="Full Coverage") Full Coverage 
+        input(type='number' name='Deductible' placeholder='Enter Deductible...' value=)
+        input(type='number' name='LandValue' placeholder='Enter LandValue...')
+        input(type='text' name='Property Name' placeholder='Enter Name...')
+        button.btn(type='submit') commit changes

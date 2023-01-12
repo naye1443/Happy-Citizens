@@ -1,3 +1,4 @@
+// Not currently being used
 
 // @Return Promise with Post values
 function getPost(){

@@ -34,7 +34,6 @@ async function get_certain_val(value){
 
 };
 
-
 // @locationinDB, "Users" or "SuperUsers" Ex. 'Users/000' points to {PhoneNumber: '(561)719-3192', StreetAddress: '1782 testcourtsuper', password: 'passwordsuper', username: 'usernamesuper'// }
 // @value, json data to add {key: "value"}
 function change_record_attr(locationinDb, value){

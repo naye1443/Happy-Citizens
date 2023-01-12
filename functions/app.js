@@ -15,6 +15,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const citizenDashboard = require('./routes/citizenDashboard');
 const SuperDashboard = require('./routes/SuperDashboard');
+const editRecord = require('./routes/editRecord');
 
 const app = express();  // creates an expess object
 
@@ -45,6 +46,7 @@ app.use('/', loginRouter);
 app.use('/index', indexRouter);
 app.use('/citizenDashboard', citizenDashboard);
 app.use('/SuperDashboard', SuperDashboard);
+app.use('/editRecord', editRecord)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
