@@ -1,32 +1,29 @@
 //- List container for cards
 mixin list(posts, user)
-  //- creates a mixin
-  mixin card(record, user, Id)
-    script.
-          // converts pug vars to javascript vars
-          var Id = !{JSON.stringify(Id)};
-          console.log(Id);
-          var record = !{JSON.stringify(record)};
-          console.log(record);
+  script.
+    // converts pug vars to javascript var
+    var record = !{JSON.stringify(posts)};
+    // TODO:Turn funciton into get request and append values from clicked card to get request. Read them serverside, and respond with rendering editRecord page. Set values 
+    // of pug to the values from the previous clicked card
+    //- @Returns promise of Record in editRecord page
+    async function GetRecord(recid, a){
+      var params = {};
 
-          function EditRecord(){
-            const options = {
-              method: 'POST',
-              headers:{
-                'content-Type': 'application/json'
-              },
-              body: JSON.stringify({ID: Id,
-              recordInfo: record})
-            };
-            return fetch('editRecord', options).then((response) => response.json())
-            .then((record) => {return record;})
-          }
-          //- @Returns promise of Record in editRecord page
-          async function GetRecord(){
-            const ClientRecord = await EditRecord();
-            console.log(ClientRecord)
-            return ClientRecord;
-          }
+      for(const key in record){
+        if(key == recid){
+          params = new URLSearchParams({  // Create URLSearch parameters
+            key: key,
+            val: JSON.stringify(record[key])
+          })
+        }
+      }
+      
+      // sets anchor href to needed url
+      location.href = window.location.href + "/editrecord?" + params;
+    }
+
+  //- creates a mixin for card
+  mixin card(record, user, Id)
     li.card
         div
           h3.card-title
@@ -49,8 +46,7 @@ mixin list(posts, user)
           if owner == user
             .card-link-wrapper
               .card-link
-                button(onclick="GetRecord()") Edit Record
-        
+                a(href="#" onclick="GetRecord("+ id +", this)") Edit Record 
 
   .postcontainer
     h2
@@ -68,4 +64,7 @@ mixin list(posts, user)
               a(href="#test") test link
       //- Creates cards for records returned from server
       each record, Id in posts
+        script.
+          var record = !{JSON.stringify(posts)};
+          console.log(record[0])
         +card(record, user, Id)

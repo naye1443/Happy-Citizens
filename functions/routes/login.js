@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const data = require('../database/get_data');
 const { json } = require('body-parser');
 
+const rootDir = "/happy-8293/us-central1/app";  //TODO: Need to import to different files 
+
 router.get('/',(req, res, next) =>
 {
     // check if session has a username associated with session, if not, loggedin is set to false
@@ -80,3 +82,4 @@ router.post('/', async (req, res, next) =>{
 })
 
 module.exports = router;
+exports = rootDir;
