@@ -1,6 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const admin = require('firebase-admin');
 const router = express.Router();
 
 const Secure_login = (req, res, next) =>{

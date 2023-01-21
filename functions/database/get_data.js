@@ -11,16 +11,16 @@ admin.initializeApp({
 // prints database to console
 function get_database(){
   db = getDatabase(); // get database
-  dbRef = db.ref();    // get refrence to database
+  dbRef = db.ref();   // get refrence to database
 
-  dbRef.on('value', (snapshot) =>{  // get the value at the refrence, and createcallback that prints shapshot of data to console
+  dbRef.on('value', (snapshot) =>{  // get the value at the refrence, and create callback that prints shapshot of data to console
       console.log(snapshot.val());
   }, (errorObject) => {   // error call back if nothing is returned
       console.log('The read failed:' + errorObject.name);
   });
 }
 
-// finding a value in that data base cannot return value as a json Object
+// @Return Promise to toJSON snapshot of Database
 async function get_certain_val(value){
   db = getDatabase();
   dbRef = db.ref(value);
@@ -49,7 +49,7 @@ function delete_record(locationinDb){
   dbRef.set(null)
 }
 
-// returns snapshot of an array containing keys of object
+// @RETURN snapshot of an array containing keys of object
 function snapshotToArray(snapshot){
   var returnArr = [];
 
@@ -68,8 +68,6 @@ function snapshotToArray(snapshot){
 *@Return: Returns User (ex. returnedval.StreetAddress)
 */
 function getUsersData(UsersOrSuperJson ,UserId){return UsersOrSuperJson[UserID];}
-
-// Need to return array of JSON objects that has similar key
 
 /*
 Function takes obj and a key. It returns all Json of all key/value pairs
@@ -94,7 +92,5 @@ function findJson(obj, Mykeys){
   // If key is matching findJson key, then add object into returning set
   // We find keys of object, iterate over properties and call function again
 }
-
-
 
 module.exports = {getDatabase, get_database, change_record_attr, delete_record, get_certain_val, getUsersData, findJson};

@@ -9,7 +9,6 @@ const logger = require('morgan');
 const session  = require('express-session');
 const {v4: uuidv4} = require('uuid');
 
-
 // storing relative file paths to routes
 // Loading routes
 const indexRouter = require('./routes/index');

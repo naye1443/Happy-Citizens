@@ -1,12 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const admin = require('firebase-admin');
 const router = express.Router();
 const data = require('../database/get_data');
-const { user } = require('firebase-functions/v1/auth');
-const session = require('express-session');
-const { app } = require('firebase-admin');
-const {rootDir} = require('./login');
 
 // middleware checks authentication
 const Secure_login = (req, res, next) =>{
@@ -17,7 +11,7 @@ const Secure_login = (req, res, next) =>{
     else
         next();
 }
-
+// Querys user data and sends to 
 router.get('/', Secure_login, async (req, res, next) =>
 {
     var record;
@@ -29,13 +23,12 @@ router.get('/', Secure_login, async (req, res, next) =>
 });
 
 router.get('/editRecord', Secure_login, (req, res, next) => {
-    // need to determine which card is clicked, and send ID of card clicked
-    // To send data to front end
+
+    // Returns Jsonobject of Records as Jsonattr
     console.log(req.query.key)
-    console.log(req.query.val)
+    const Jsonattr = JSON.parse(req.query.val);
 
-    res.render('editRecord', {title: 'editRecord', message:'editRecord', user:req.session.username})
-
+    res.render('editRecord', {title: 'editRecord', message:'editRecord', user:req.session.username, UserRecID:req.query.key, UserRec:Jsonattr})
 });
 
 router.post('/editRecord', Secure_login, (req,res,next) => {

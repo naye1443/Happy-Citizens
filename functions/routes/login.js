@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const data = require('../database/get_data');
-const { json } = require('body-parser');
-
-const rootDir = "/happy-8293/us-central1/app";  //TODO: Need to import to different files 
 
 router.get('/',(req, res, next) =>
 {
@@ -26,24 +22,18 @@ router.post('/', async (req, res, next) =>{
         varobj = data;
         usertype = "users";
     });
-     console.log(varobj);
-     //console.log(typeof varobj);
+    // @RETURN JSON object of Users by ID
     // ***************************************************************************************************************************************************/
-    console.log(req.body);  // prints body of request to console , Hence, username and password
-
-    // need to loop through User and SuperUsers until find Matching Username and password
+    
     const Username = req.body.username;
     const Pass = req.body.password;
 
-    // Need to return array of all possible JSONobj in arrays to find if user exist
+    // Need to return array of all possible JSONobj in arrays to find if user/SuperUser exist
     if(usertype === "users"){
         Users = [];
         AuthenticatedUser = false;
         for(i=0; i<Object.keys(varobj).length;i++){
             if((data.findJson(varobj, String(i))[0].username === Username) && (data.findJson(varobj, String(i))[0].password === Pass)){
-
-                console.log(data.findJson(varobj, String(i))[0].username + " should be equal to " + Username);
-                console.log(data.findJson(varobj, String(i))[0].password + " should be equal to " + Pass);
                 AuthenticatedUser = true;
                 console.log("Authenticated user");
                 break;
@@ -68,18 +58,18 @@ router.post('/', async (req, res, next) =>{
         }
     }
     
+    // create User session and authenticate
     if(AuthenticatedUser && usertype == "users"){
-        req.session.username = Username;    // Store username in session
+        req.session.username = Username;
         req.session.loggedin = true;
-        res.redirect('./citizenDashboard');    // redirects user and sends username whrough getreq
+        res.redirect('./citizenDashboard');
     }else{
         req.session.username = Username;
         req.session.loggedin = true;
         res.redirect('./SuperDashboard');
     }
 
-    res.status(201).send(); // sends a 201 status code back
+    res.status(201).send();
 })
 
 module.exports = router;
-exports = rootDir;

@@ -8,16 +8,19 @@ block content
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet' type='text/css' href='/happy-8293/us-central1/app/stylesheets/css/editRecords.css')
   body(id="main")
+
     script.
-      //ReturnPost();  //- Used to debug query for database
+      var attr = !{JSON.stringify(UserRec)};
+      var attrId = !{JSON.stringify(UserRecID)}
+      console.log(attr + " and " + attrId);
     .container
       form.edit-form(action="./editrecord" method="GET")
-        input(type='text' name='InsuranceName' placeholder='Enter Insurance Name...')
-        select(name='InsuranceType')
+        input(type='text' name='InsuranceName' value=UserRec.Insurance   placeholder='Enter Insurance Name...')
+        select(name='InsuranceType' value=UserRec.InsuranceType)
             option(value="Minimal Coverage") Minimal Coverage
             option(value="Partial Coverage") Partial Coverage
             option(value="Full Coverage") Full Coverage 
-        input(type='number' name='Deductible' placeholder='Enter Deductible...')
-        input(type='number' name='LandValue' placeholder='Enter LandValue...')
-        input(type='text' name='PropertyName' placeholder='Enter Name...')
+        input(type='number' name='Deductible' placeholder='Enter Deductible...' value=UserRec.Deductible)
+        input(type='number' name='LandValue' placeholder='Enter LandValue...' value=UserRec.LandValue)
+        input(type='text' name='PropertyName' placeholder='Enter Name...' value=UserRec.PropertyName)
         button.btn(type='submit') commit changes
